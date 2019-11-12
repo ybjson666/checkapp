@@ -1,0 +1,26 @@
+.container{
+    padding-top: 2rem;
+    background: #fff;
+}
+.logo-block{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.logo-block img{
+    height: 100%;
+}
+.company-name{
+    text-align: center;
+    margin-top: .7rem;
+    font-weight: bold;
+}
+.brief-contents{
+    margin-top: 2rem;
+}
+.brief-contents p{
+    text-align: justify;
+    line-height: 1.2rem;
+}

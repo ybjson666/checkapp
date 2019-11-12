@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分享</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/downLoad/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <div class="logo-block"><img src="images/yaoqing_bx.png" alt=""></div>
+            <div class="down-block">
+                <p><a href="javascript:" class="button ios-btn" @click="shareIos">Ios App 下载</a></p>
+                <p><a href="javascript:" class="button android-btn" @click="shareAndroid">Android App 下载</a></p>
+            </div>
+        </div>
+        <transition name="fade">
+            <div class="down-shade" v-show="isShow" @click="close">
+                <div class="wrap">
+                    <div class="share-icon"><img src="images/share_icon.png" alt=""></div>
+                    <p class="share-words">请点击右上角分享按钮，在浏览器中打开</p>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/downLoad/index.js"></script>

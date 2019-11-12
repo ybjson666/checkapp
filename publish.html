@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布公告</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/common/check.css">
+    <link rel="stylesheet" href="css/publish/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <div class="title-block block">
+                <div class="title-bar">
+                    <label for="" class="labels">标题：</label>
+                    <input type="text" class="title-txt" v-model='notice.title' placeholder="请输入公告的标题，不超过40个字">
+                </div>
+            </div>
+            <div class="pub-content-block block">
+                <p class="content-title">公告内容：</p>
+                <textarea v-model="notice.contents" placeholder="请输入公告内容，不超过500个字" maxlength="10" class="notice-contents"></textarea>
+            </div>
+            <div class="pic-block block">
+                <p class="content-title">添加图片(选填)：</p>
+                <div class="add-pic-block">
+                    <div class="pic-list-block">
+                        <ul class="pic-list">
+                            <li v-for="(item,index) in picList" @touchstart="touched(index)" @touchend="touchEnded">
+                                <div class="pic-warper"><img :src="item" alt=""></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <input type="file" ref="files" style="display: none" @change="chooseImage($event)">
+                    <div class="add-pic" @click="addPic"><img src="images/camera.png" alt=""></div>
+                </div>
+            </div>
+            <span class="button pub-btn" @click="publishing" :disabled="isUse">发布</span>
+        </div>
+        <!--删除图片模态框-->
+        <transition name="fade">
+            <div class="dele-pic-block" v-show="isDele">
+                <div class="wrap">
+                    <div class="dele-box">
+                        <p class="dele-title">确认</p>
+                        <p class="dele-text">确认删除该照片吗?</p>
+                        <div class="dele-btn-groups">
+                            <span class="sure-dele" @click="sureDele">确定</span>
+                            <span class="cancle-dele" @click="cancleDele">取消</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+            <!--loading模态框 -->
+            <transition name="fade">
+            <div class="loading-block" v-show="loading">
+                <div class="wrap">
+                    <div class="loading-wraps"><img src="images/loding_web.gif" alt=""></div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/publish/index.js"></script>

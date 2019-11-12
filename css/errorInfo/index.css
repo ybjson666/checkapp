@@ -1,0 +1,150 @@
+.container{
+    min-height: calc(100% - 2rem);
+}
+.info-bar{
+    padding-bottom: .3rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+.bar-icon{
+    display: inline-block;
+    width: 1rem;
+    vertical-align: middle;
+    margin-right: .2rem;
+}
+.info-contents{
+    padding-top: .3rem;
+}
+.rows{
+    display: flex;
+    line-height: 1.25rem;
+}
+.row-label{
+    flex: 1;
+}
+.row-value{
+    width: 13.5rem;
+}
+.section2{
+    margin-top: .8rem;
+}
+.check-list li{
+    display: flex;
+    line-height: 1.25rem;
+}
+.check-label{
+    flex: 1;
+}
+.check-contents{
+    width: 10rem;
+}
+.contents-wrap{
+    display: flex;
+}
+.contents-item{
+    flex: 1;
+    text-align: center;
+}
+.check-tags{
+    margin-left: .2rem;
+}
+.section3{
+    margin-top: .8rem;
+}
+.line-row{
+    margin-bottom: .5rem;
+    display: flex;
+}
+.line-contents{
+    width: 13.5rem;
+}
+.line-label{
+    flex: 1;
+}
+.voice-icon{
+    display: inline-block;
+    width: 6rem;
+    height: 1.2rem;
+    background: #eaeaea;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+.voice-icon-wraps{
+    text-align: center;
+}
+.voice-icon-wraps img{
+    width: 1rem;
+    margin-top: .1rem;
+}
+.gif-wraps{
+    line-height: 1.2rem;
+    color: #777;
+    padding-left: .5rem;
+    box-sizing: border-box;
+}
+.voice-gif{
+    position: relative;
+    height: 1.2rem;
+    width: 2rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.voice-gif span{
+    width:5px;
+    height: 5px;
+    top:0px;
+    position:absolute;
+    background:red;
+    -webkit-animation: bodong 0.5s infinite  ease;
+}
+.voice-gif span:first-child{
+    left:0px;
+    -webkit-animation-delay:.3s;
+}
+
+.voice-gif span:nth-child(2){
+    left:7px;
+    -webkit-animation-delay:.4s;
+
+}
+.voice-gif span:nth-child(3){
+    left:14px;
+     -webkit-animation-delay:.6s;
+}
+.voice-gif span:nth-child(4){
+    left:21px;
+     -webkit-animation-delay:.8s;
+}
+.voice-gif span:nth-child(5){
+    left:28px;
+     -webkit-animation-delay:1s;
+}
+
+@-webkit-keyframes bodong{
+    0%{height:5px; background:bule;}
+    30%{height:15px; background:bule;}
+    60%{height:20px; background:bule;}
+    80%{height:15px; background:bule;}
+    100%{height:5px; background:bule;}
+}
+
+.pic-list{
+    display: flex;
+    margin-top: .5rem;
+}
+.pic-list li{
+    width: 5.5rem;
+    margin-right: .5rem;
+    box-sizing: border-box;
+    
+}
+.pic-list li:last-child{
+    margin-right: 0;
+}
+.pic-icon{
+    width: 100%;
+    height:5.5rem;
+    overflow: hidden;
+}
+.pic-icon img{
+    min-height: 5.5rem;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>公司简介</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/brief/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="container">
+            <div class="logo-block">
+                <img :src="company.logo" alt="">
+            </div>
+            <p class="company-name" v-text="company.name"></p>
+            <div class="brief-contents block" v-html="company.info"></div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/brief/index.js"></script>

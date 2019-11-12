@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>维修组列表</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/groupList/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>维修组列表</h2>
+        </div>
+        <div class="container block">
+            <div class="device-block">
+                <ul class="device-list" ref="device_list">
+                    <li v-for="item in groupList" @click="seleGroup(item)">
+                        <span>{{item.class_name}}</span>
+                    </li>
+                </ul>
+                <p class="noneData" v-if="!groupList.length">暂无数据</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/groupList/index.js"></script>

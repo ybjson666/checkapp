@@ -1,0 +1,33 @@
+.title{
+    color: #8a8a8a;
+    margin-bottom: 1rem;
+    padding-left: .5rem;
+    box-sizing: border-box;
+}
+.contents{
+    padding-top: 1rem;
+    box-sizing: border-box;
+}
+.question-list li{
+    padding: 0 .5rem;
+    box-sizing: border-box;
+    line-height: 1.5rem;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: .3rem;
+    display: flex;
+}
+.icon{
+    transform: rotate(180deg);
+    display: block;
+    width: 1rem;
+}
+img{
+    vertical-align: middle;
+}
+.question-name{
+    width: 16.5rem;
+    margin-right: .5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

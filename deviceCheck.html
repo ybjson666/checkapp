@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设备点检</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/deviceCheck/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="container">
+            <div class="deviceInfo-bar wrap block">
+                <span class="setting-icon"><img src="images/setting.png" alt=""></span>
+                <span class="setting-label">设备信息</span>
+                <span class="button stop-button" @click="stopWorking">停机</span>
+            </div>
+            <div class="deviceInfo-content block">
+                <div class="device-rows">
+                    <span class="device-label">设备编号:</span>
+                    <span class="device-values">{{device.de_number}}</span>
+                </div>
+                <div class="device-rows">
+                    <span class="device-label">设备名称:</span>
+                    <span class="device-values">{{device.de_name}}</span>
+                </div>
+                <div class="device-rows">
+                    <span class="device-label">设备地点:</span>
+                    <span class="device-values">{{device.address}}</span>
+                </div>
+            </div>
+            <div class="task-section">
+                <div class="task-bar block">
+                    <div class="task-row">
+                        <span class="task-icon"><img src="images/tasks.png" alt=""></span>
+                        <span class="task-tags">任务列表</span>
+                    </div>
+                    <div class="task-row">
+                        <span class="error-icon"><img src="images/error.png" alt=""></span>
+                        <span class="error-info">系统默认当日维护项均为正常</span>
+                    </div>
+                </div>
+                <div class="task-contents block" ref="contents">
+                    <div class="refresh-wrapper">
+                        <div class="refersh">
+                            <ul class="task-list" ref="list">
+                                <li v-for="item in taskList">
+                                    <div class="task-type"><span>三检</span></div>
+                                    <div class="task-infos">
+                                        <p>{{item.name}}</p>
+                                        <!-- <p v-text="item.taskContents"></p> -->
+                                        <p>{{item.open_time}}--{{item.end_time}}</p>
+                                    </div>
+                                    <div class="task-status"><span>{{item.note}}</span></div>
+                                </li>
+                            </ul>
+                            <div class="bottom-tip">
+                                <span class="loading-hook" v-text="loadingTxt"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-section">
+                <span class="button skips" @click="skipDevice">跳过该设备</span>
+                <span class="button" @click="takePhoto">提交设备</span>
+            </div>
+        </div>
+        <!--停机模态框-->
+        <transition name="fade">
+            <div class="dele-pic-block" v-show="isStop">
+               <div class="wrap">
+                   <div class="dele-box">
+                       <p class="dele-title">提示</p>
+                       <p class="dele-text">选择停机后，本次的点检任务(紫标除外)会全部变成停机未检</p>
+                       <div class="dele-btn-groups">
+                           <span class="sure-dele">确定</span>
+                           <span class="cancle-dele" @click="cancleStop">取消</span>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </transition>
+        <!--停机模态框-->
+        <transition name="fade">
+            <div class="dele-pic-block" v-show="isSkip">
+               <div class="wrap">
+                   <div class="dele-box">
+                       <p class="dele-title">提示</p>
+                       <p class="dele-text">跳过设备后，系统会自动下发下一个设备的点检任务，但本设备的任务还是存在的</p>
+                       <div class="dele-btn-groups">
+                           <span class="sure-dele">确定</span>
+                           <span class="cancle-dele" @click="cancleSkip">取消</span>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </transition>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/bscroll.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/deviceCheck/index.js"></script>

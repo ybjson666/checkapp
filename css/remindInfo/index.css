@@ -1,0 +1,54 @@
+.remind-block{
+    border-bottom: 1px solid #8a8a8a;
+}
+.remind-title{
+    margin-bottom: 1rem;
+}
+.remind-row{
+    margin-bottom: .5rem;
+    line-height: 1rem;
+    display: flex;
+}
+.remind-label{
+    color: #8a8a8a;
+    margin-right: .3rem;
+    text-align: right;
+    flex: 1;
+}
+.remind-value{
+    width: 13.5rem;
+}
+.repair-value{
+    width: 13.5rem;
+}
+.img-container{
+    width: 100%;
+    display: flex;
+}
+.device-img-value{
+    width: 3rem;
+    margin-right: .5rem;
+    height: 3rem;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.device-img-value img{
+    height: 100%;
+}
+.repair-contents{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-top: 1rem;
+}
+.repair-block{
+    padding-top: .5rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid #8a8a8a;
+}
+.repair-bar{
+    line-height: 1.5rem;
+    margin-bottom: .8rem;
+}
+.remind-value img{
+    width: 5rem;
+}

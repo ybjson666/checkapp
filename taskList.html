@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设备点检</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/taskList/index.css?v=1.2">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>点检任务</h2>
+        </div>
+        <div class="container">
+            <div class="task-bar block">
+                <ul class="bar-list">
+                    <li v-for="(item,index) in taskTypes" :class="{on:curIndex==index}" @click="seleType(index,item.type)">
+                        <span>{{item.name}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="task-list-block" ref="list_wraper">
+                <div class="refresh-wrapper">
+                    <div class="refersh">
+                        <div class="top-tip">
+                            <span class="refresh-hook">下拉刷新</span>
+                        </div>
+                        <ul class="task-list" ref="list">
+                            <li v-for="item in taskList" class="block" @click="seekInfo(item)">
+                                <div class="task-item-bar">
+                                    <span class="task-icon"><img src="images/title2.png" alt=""></span>
+                                    <span class="task-txt">点检设备</span>
+                                </div>
+                                <div class="task-contents">
+                                    <p class="task-line">
+                                        <span class="label">设备名称：</span>
+                                        <span class="device-name">{{item.device_name}}</span>
+                                        <span class="addTime">{{formatTime(item.addtime)}}</span>
+                                    </p>
+                                    <p class="task-line">
+                                        <span class="label">设备地点：</span>
+                                        <span class="device-addr">{{item.address}}</span>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="noneData" v-if="!taskList.length">暂无数据</p>
+                        <div class="bottom-tip" v-show="taskList.length">
+                            <span class="loading-hook">{{loadingTxt}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alerts alert-hook">刷新成功</div>
+        <!--登录模态框 -->
+        <transition name="fade">
+            <div class="logining-block" v-show="logining">
+                <div class="wrap">
+                    <div class="logining-wraps">正在登录中...</div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/bscroll.min.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/taskList/index.js"></script>

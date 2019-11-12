@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的报修</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/modiRepair/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>修改报修</h2>
+        </div>
+        <div class="container">
+            <div class="repair-bar block">
+                <div class="fl">
+                    <span class="repair-icon"><img src="images/title.png" alt=""></span>
+                    <span>报修信息</span>
+                </div>
+                <div class="fr">
+                    <span>报修单号:</span>
+                    <span>{{repair.device_num}}</span>
+                </div>
+                <div class="cl"></div>
+            </div>
+            <div class="repair-contents block">
+                <div class="repair-row">
+                    <span class="reapir-label">设备:</span>
+                    <div class="repair-value">
+                        <span>{{repair.de_name}}</span>
+                    </div>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">地址：</span>
+                    <input type="text" class="repair-value" v-model="repair.address" disabled></span>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">编号：</span>
+                    <input type="text" class="repair-value" v-model="repair.device_num" disabled></span>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">描述：</span>
+                    <input type="text" class="repair-value" v-model="repair.describe"></span>
+                </div>
+                <div class="repair-row" v-show="upPic.length">
+                    <span class="reapir-label">照片：</span>
+                    <div class="repair-value">
+                        <div class="img-container">
+                            <span class="device-img-value" v-for="(item,index) in upPic"  
+                            @touchstart="touchStr(index)" @touchend="touchEnded" @click="scanImg(item)">
+                                <img :src="item" alt="">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repair-row" v-show="repair.describe_voice">
+                    <span class="reapir-label">语音：</span>
+                    <div class="repair-value">
+                        <div class="voice-icon">
+                            <div class="voice-icon-wraps" v-show="!isPlay" @click="plays">
+                                <img src="images/voice2.png" alt="">
+                            </div>
+                            <div class="gif-wraps" v-show="isPlay" @click="pauses">
+                                <div class="voice-gif">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span>点击停止</span>
+                            </div>
+                        </div>
+                        <!-- <audio class="audios"  :src="repair.describe_voice" ref="players"></audio> -->
+                    </div>
+                </div>
+            </div>
+            <div class="repair-others block">
+                <div class="others-row">
+                    <span class="others-label">报修人：</span>
+                    <span>{{repair.realname}}</span>
+                </div>
+                <div class="others-row">
+                    <span class="others-label">报修时间：</span>
+                    <span >{{formatTime(repair.addtime)}}</span>
+                </div>
+            </div>
+            <div class="warn-bar">注意:<p class="warn-text">此页面信息谨慎修改,只可修改设备描述和异常照片</p></div>
+            <div class="up-pic-row">
+                <span class="up-label">上传图片：</span>
+                <span class="up-icon" @click="choosePicture"><img src="images/camera.png" alt=""></span>
+            </div>
+            <div class="up-pic-row">
+                <span class="up-label">录制语音：</span>
+                <span class="up-icon" @click="recordVoice"><img src="images/voice.png" alt=""></span>
+                <span class="speaking" @touchstart="speaking" @touchend="speakingEnd" v-show="isSpeak" v-text="speakTxt"></span>
+                <span class="voice-wrpas" v-show="hasVoice" @click="playVoice"><img src="images/voice2.png" alt=""><strong v-text="rec_time"></strong>"</span>
+            </div>
+            <div class="btn-block"><button class="button sure-btn" :disabled="isUse" @click="subModify">提交</button></div>
+        </div>
+          <!--删除图片模态框-->
+          <transition name="fade">
+            <div class="dele-pic-block" v-show="isDele">
+               <div class="wrap">
+                   <div class="dele-box">
+                       <p class="dele-title">确认</p>
+                       <p class="dele-text">确认删除该照片吗?</p>
+                       <div class="dele-btn-groups">
+                           <span class="sure-dele" @click="sureDele">确定</span>
+                           <span class="cancle-dele" @click="cancleDele">取消</span>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </transition>
+        <!--loading模态框 -->
+        <transition name="fade">
+            <div class="loading-block" v-show="loading">
+                <div class="wrap">
+                    <div class="loading-wraps"><img src="images/loding_web.gif" alt=""></div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/modiRepair/index.js"></script>

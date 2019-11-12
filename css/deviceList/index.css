@@ -1,0 +1,50 @@
+.container{
+    min-height: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+}
+.device-block{
+    position: relative;
+    height:100%;
+    overflow: hidden;
+}
+.device-list{
+    margin-bottom: .5rem;
+}
+.device-list li{
+    margin-bottom: .5rem;
+    line-height: 1.25rem;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: .2rem;
+}
+.bottom-tip{
+    background: #fff;
+}
+.add-device{
+    position: absolute;
+    height: 2rem;
+    line-height: 2rem;
+    right: .5rem;
+    color: #fff;
+    top:0;
+    font-weight: bold;
+}
+.device-bar{
+    height: 1.5rem;
+    background: #eaeaea;
+}
+.device-icon{
+    width: 0.7rem;
+    vertical-align: middle;
+}
+.device-icon-wraps{
+    margin-right: .5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+.device-txts{
+    vertical-align: middle;
+    margin-left: .1rem;
+}
+.device-txts.on{
+    color: #1296db;
+}

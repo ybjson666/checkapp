@@ -1,0 +1,17 @@
+.news-title{
+    text-align: center;
+    color: #0076ff;
+    font-size: .9rem;
+}
+.info-bar{
+    margin-top: 1.5rem;
+    height: 1rem;
+    font-size: .7rem;
+}
+.news-info-contents{
+    margin-top: 1rem;
+}
+.news-info-contents p{
+    text-align: justify;
+    line-height: 1rem;
+}

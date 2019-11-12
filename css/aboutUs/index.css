@@ -1,0 +1,18 @@
+.contents{
+    height: 10rem;
+    background: #1890ff;
+}
+.btn-block{
+    margin-top: 3rem;
+}
+.btn-block a{
+    display: block;
+    width: 9rem;
+    height: 1.2rem;
+    text-align: center;
+    line-height: 1.2rem;
+    color: #fff;
+    background: #1890ff;
+    border-radius: 3px;
+    margin: 0 auto;
+}

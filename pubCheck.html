@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点检任务</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/common/check2.css">
+    <link rel="stylesheet" href="css/pubCheck/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <div class="block section1">
+                <div class="info-bar">
+                    <span class="bar-icon"><img src="images/title2.png" alt=""></span>
+                    <span class="bar-label">点检信息</span>
+                </div>
+                <div class="info-contents">
+                    <div class="rows">
+                        <span class="row-label">点检编号：</span>
+                        <span class="row-value">{{check.number}}</span>
+                    </div>
+                    <div class="rows">
+                        <span class="row-label">设备名称：</span>
+                        <div class="row-value" @click="chooseDevice">
+                            <input type="text" placeholder="请选择设备(必选)" readonly v-model="check.device_name" class="row-text">
+                            <div class="sele-icon"><img src="images/right.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="rows">
+                        <span class="row-label">异常报送：</span>
+                        <div class="row-value" @click="choosePerson">
+                            <input type="text" placeholder="请选择维修组(非必选)" readonly v-model="check.send_person" class="row-text">
+                            <div class="sele-icon"><img src="images/right.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="rows">
+                        <span class="row-label">点检时间：</span>
+                        <span class="row-value">{{check.check_date}}</span>
+                    </div>
+                    <div class="rows">
+                        <span class="row-label">点检人员：</span>
+                        <span class="row-value">{{check.check_person}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section2 block">
+                <div class="info-bar">
+                    <span class="bar-icon"><img src="images/title2.png" alt=""></span>
+                    <span class="bar-label">点检详情</span>
+                </div>
+                <div class="info-contents">
+                    <ul class="check-list">
+                        <li v-for="item in confgList">
+                            <span class="check-label">{{item.name}}</span>
+                            <div class="check-contents">
+                                <div class="contents-wrap">
+                                    <div class="contents-item">
+                                        <label class="theme-radio"><input type="radio" value="0" :name="item.name" v-model="item.status"><i class="icon-radio"></i></label>
+                                        <span class="check-tags">正常</span>
+                                    </div>
+                                    <div class="contents-item">
+                                        <label class="theme-radio"><input type="radio" value="1" :name="item.name" v-model="item.status"><i class="icon-radio"></i></label>
+                                        <span class="check-tags">异常</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section3 block" v-show="hasError">
+                <div class="info-bar">
+                    <span class="bar-icon"><img src="images/title2.png" alt=""></span>
+                    <span class="bar-label">点检反馈</span>
+                </div>
+                <div class="info-contents">
+                    <div class="line-rows">
+                        <span class="line-label">异常反馈</span>
+                        <input type="text" class="line-input" v-model="couples" placeholder="请对缺陷进行反馈">
+                    </div>
+                    <div class="line-rows">
+                        <span class="line-label">录音</span>
+                        <div class="line-input2">
+                            <span class="speaking" @touchstart="speaking" @touchend="speakingEnd" v-show="isSpeak" v-text="speakTxt"></span>
+                            <span class="voice-wrpas" v-show="hasVoice" @click="playVoice"><img src="images/voice2.png" alt=""><strong v-text="rec_time"></strong>"</span>
+                        </div>
+                    </div>
+                    <div class="line-rows">
+                        <span class="line-label">拍照</span>
+                        <div class="line-input2">
+                            <span class="caseInfo-icon" @click="choosePicture"><img src="images/camera.png" alt=""></span>
+                        </div>
+                    </div>
+                    <div class="lines">
+                        <ul class="pic-list">
+                            <li v-for="(item,index) in upPic"  @touchstart="touchStr(index)" @touchend="touchEnded">
+                                <div class="pic-icon"><img :src="item" alt=""></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button :disabled="isAbled" class="button subtn" @click="subPrarms">提交</button>
+        </div>
+        <!--删除图片模态框-->
+        <transition name="fade">
+            <div class="dele-pic-block" v-show="isDele">
+               <div class="wrap">
+                   <div class="dele-box">
+                       <p class="dele-title">确认</p>
+                       <p class="dele-text">确认删除该照片吗?</p>
+                       <div class="dele-btn-groups">
+                           <span class="sure-dele" @click="sureDele">确定</span>
+                           <span class="cancle-dele" @click="cancleDele">取消</span>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </transition>
+         <!--loading模态框 -->
+         <transition name="fade">
+            <div class="loading-block" v-show="loading">
+                <div class="wrap">
+                    <div class="loading-wraps"><img src="images/loding_web.gif" alt=""></div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/pubCheck/index.js"></script>

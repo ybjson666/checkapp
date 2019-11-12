@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>点检详情</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/common/check2.css">
+    <link rel="stylesheet" href="css/normalInfo/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+         <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>点检详情</h2>
+        </div>
+        <div class="container">
+            <div class="block section1">
+                <div class="info-bar">
+                    <span class="bar-icon"><img src="images/title2.png" alt=""></span>
+                    <span class="bar-label">点检信息</span>
+                </div>
+                <div class="info-contents">
+                    <div class="rows">
+                        <span class="row-label">点检编号：</span>
+                        <span class="row-value">{{check.rt_num}}</span>
+                    </div>
+                    <div class="rows">
+                        <span class="row-label">设备名称：</span>
+                        <span class="row-value">{{check.de_name}}</span>
+                    </div>
+                    <div class="rows">
+                        <span class="row-label">异常报送：</span>
+                        <span class="row-value">{{check.panme}}</span>
+                    </div>
+                    <div class="rows">
+                        <span class="row-label">点检时间：</span>
+                        <span class="row-value">{{formatTime(check.addtime)}}</span>
+                    </div>
+                    <div class="rows">
+                        <span class="row-label">点检人员：</span>
+                        <span class="row-value">{{check.realname}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section2 block">
+                <div class="info-bar">
+                    <span class="bar-icon"><img src="images/title2.png" alt=""></span>
+                    <span class="bar-label">点检详情</span>
+                </div>
+                <div class="info-contents">
+                    <ul class="check-list">
+                        <li v-for="item in list">
+                            <span class="check-label">{{item.name}}</span>
+                            <div class="check-contents">
+                                <div class="contents-wrap">
+                                    <div class="contents-item">
+                                        <label class="theme-radio"><input type="radio"  value="0" :name="item.name" v-model="item.status" disabled><i class="icon-radio"></i></label>
+                                        <span class="check-tags">正常</span>
+                                    </div>
+                                    <div class="contents-item">
+                                        <label class="theme-radio"><input type="radio"  value="1" :name="item.name" v-model="item.status" disabled><i class="icon-radio"></i></label>
+                                        <span class="check-tags">异常</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/normalInfo/index.js"></script>

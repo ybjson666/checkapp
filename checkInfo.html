@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设备点检</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/checkInfo/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <div class="deviceInfo-bar block">
+                <span class="setting-icon"><img src="images/setting.png" alt=""></span>
+                <span class="setting-label">设备信息</span>
+            </div>
+            <div class="deviceInfo-content block">
+                <div class="device-rows">
+                    <span class="device-label">设备编号:</span>
+                    <span class="device-values">{{device.de_number}}</span>
+                </div>
+                <div class="device-rows">
+                    <span class="device-label">设备名称:</span>
+                    <span class="device-values">{{device.de_name}}</span>
+                </div>
+                <div class="device-rows">
+                    <span class="device-label">设备地点:</span>
+                    <span class="device-values">{{device.address}}</span>
+                </div>
+            </div>
+            <div class="words-block">
+                <p>当前时间段该设备无未完成任务，如需点检其他设备，请点击菜单，我的 -> 今日点检</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/checkInfo/index.js"></script>

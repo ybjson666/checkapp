@@ -1,0 +1,23 @@
+.container{
+    height: 100%;
+    background: #fff;
+    padding: 1rem;
+    
+}
+.join-btn{
+    background: #2982fe;
+    color: #fff;
+    margin-top: 4rem;
+    width: 100%;
+}
+.title{
+    font-weight: bold;
+    color: #333;
+    font-size: .8rem;
+    margin-bottom: .7rem;
+}
+.company-info{
+    color: #888;
+    font-size: .7rem;
+    margin-bottom: 1rem;
+}

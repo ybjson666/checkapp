@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加设备</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/addDevice/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>添加设备</h2>
+        </div>
+        <div class="container">
+            <div class="device-block block">
+                <div class="rows">
+                    <span class="labels">设备名称</span>
+                    <input type="text" class="row-input" v-model="device_name" placeholder="请输入设备名称">
+                </div>
+                <div class="rows">
+                    <span class="labels">设备编号</span>
+                    <input type="text" class="row-input" v-model="device_number" placeholder="请输入设备编号">
+                </div>
+                <div class="rows">
+                    <span class="labels">控制系统型号</span>
+                    <input type="text" class="row-input" v-model="device_types" placeholder="请输入控制系统型号">
+                </div>
+                <div class="rows">
+                    <span class="labels">使用单位</span>
+                    <input type="text" class="row-input" v-model="device_company" placeholder="请输入设备单位">
+                </div>
+                <div class="rows">
+                    <span class="labels">详细地址</span>
+                    <input type="text" class="row-input" v-model="device_addr" placeholder="请输入设备详细地址">
+                </div>
+                <div class="rows">
+                    <span class="labels">设备型号</span>
+                    <input type="text" class="row-input" v-model="device_style" placeholder="请输入设备型号">
+                </div>
+                <div class="rows">
+                    <span class="labels">设备厂家</span>
+                    <input type="text" class="row-input" v-model="device_provider" placeholder="请输入设备厂家">
+                </div>
+                <div class="rows">
+                    <span class="labels">责任人</span>
+                    <input type="text" class="row-input" v-model="device_dutor" placeholder="请输入责任人">
+                </div>
+                <div class="rows">
+                    <span class="labels">备注</span>
+                    <input type="text" class="row-input" v-model="device_remark" placeholder="请输入备注">
+                </div>
+                <div class="rows">
+                    <span class="labels">上传图片</span>
+                    <div class="row-input">
+                        <span class="pic-icon" @click="choosePicture"><img src="images/camera.png" alt=""></span>
+                    </div>
+                </div>
+                <div class="pic-rows">
+                    <div class="device-pic-list" v-show="upPic.length">
+                        <div class="device-pic-wrap" v-for="(item,index) in upPic" 
+                        @touchstart="touchStr(index)" @touchend="touchEnded">
+                            <div class="wrap">
+                                <div class="pic-container">
+                                    <img :src="item" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="button pub-btn" :disabled="isAble" @click="publish">发布</button>
+        </div>
+        <!--删除图片模态框-->
+        <transition name="fade">
+            <div class="dele-pic-block" v-show="isDele">
+                <div class="wrap">
+                    <div class="dele-box">
+                        <p class="dele-title">确认</p>
+                        <p class="dele-text">确认删除该照片吗?</p>
+                        <div class="dele-btn-groups">
+                            <span class="sure-dele" @click="sureDele">确定</span>
+                            <span class="cancle-dele" @click="cancleDele">取消</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+            <!--loading模态框 -->
+            <transition name="fade">
+            <div class="loading-block" v-show="loading">
+                <div class="wrap">
+                    <div class="loading-wraps"><img src="images/loding_web.gif" alt=""></div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/addDevice/index.js"></script>

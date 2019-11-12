@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>注册内部报修平台</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/refFlat/index.css?v=1.0">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+	<div id="app"  v-cloak>
+        <div class="container">
+            <div class="block">
+                    <p class="tags">请填写您的手机号码</p>
+                    <div class="row">
+                        <span class="icon"><img src="images/phone.png" alt=""></span>
+                        <div class="row-wraps wrap">
+                            <input type="number" class="row-input" placeholder="请输入手机号码" v-model="user_phone" oninput="if(value.length>11) value=value.slice(0,11)"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="icon"><img src="images/code.png" alt=""></span>
+                        <div class="row-wraps wrap">
+                            <input type="text" class="row-input picture_input" placeholder="请输入图形验证码" v-model="pic_codes">
+                            <span class="icon-wrap" @click="getPictureCode" v-if="picture_code">
+                                <img :src="picture_code" alt="" width="40">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <span class="icon"><img src="images/code.png" alt=""></span>
+                        <div class="row-wraps wrap">
+                            <input type="number" class="row-input info-input" placeholder="请输入短信验证码" v-model="info_code" oninput="if(value.length>6) value=value.slice(0,6)">
+                            <button class="icon-wrap code-wraps" @click="getCodes" v-text="code_txt" :disabled="isUse"></button>
+                        </div>
+                    </div>
+                    <p class="alert-words"><a href="javascript:">内部报修平台是啥?</a></p>
+                    <div class="nextProps"><a href="javascript:" @click="goNext">下一步</a></div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/refFlat/index.js"></script>

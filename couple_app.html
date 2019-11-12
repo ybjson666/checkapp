@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>意见反馈</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/common/check.css">
+    <link rel="stylesheet" href="css/couple/indexApp.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="container">
+            <div class="log-block block">
+                <div class="log-icon"><img src="images/email.png" alt=""></div>
+                <p class="log-text">你的意见反馈是“鑫点检修”成长的滋养</p>
+            </div>
+            <div class="couple-block block">
+                <div class="couple-type-block">
+                    <p class="couple-type-title">请选择反馈问题的类型</p>
+                    <div class="couple-type-contents">
+                        <div class="type-row">
+                            <span class="type-label">功能异常</span>
+                            <span class="type-contents">不能正常使用现有功能</span>
+                            <span class="type-input">
+                                    <label class="theme-radio"><input type="radio" value="1" v-model="couple_type" name="couple_type"><i class="icon-radio"></i></label>
+                            </span>
+                        </div>
+                        <div class="type-row">
+                            <span class="type-label">其他问题</span>
+                            <span class="type-contents">用的不爽，功能建议等</span>
+                            <span class="type-input">
+                                <label class="theme-radio"><input type="radio" value="2" v-model="couple_type" name="couple_type"><i class="icon-radio"></i></label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="couple-desc-contents block">
+                    <p class="couple-type-title">问题和意见</p>
+                    <textarea class="couple-desc-title" placeholder="请简单描述您的意见和问题，若功能异常，上传页面截图可更快解决哦"
+                    v-model="couples"></textarea>
+                    <p class="couple-desc-title">添加图片（选填）</p>
+                    <div class="device-pic-list">
+                        <div class="device-pic-wrap" @touchstart="touched" @touchend="touchEnded" v-show="couple_pic">
+                            <div class="wrap">
+                                <div class="pic-container">
+                                    <img :src="couple_pic" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="device-pic-wrap add-wrap" @click="selePic">
+                            <img src="images/camera.png" alt="">
+                        </div>
+                        <input type="file" style="display: none;" ref="files" @change="changeImage($event)" id="file">
+                    </div>
+                </div>
+            </div>
+            <div class="btn-block"><button class="button sure-btn" @click="subParam" :disabled="isUse">提交</button></div>
+        </div>
+        <!--删除图片模态框-->
+        <transition name="fade">
+            <div class="dele-pic-block" v-show="isDele">
+               <div class="wrap">
+                   <div class="dele-box">
+                       <p class="dele-title">确认</p>
+                       <p class="dele-text">确认删除该照片吗?</p>
+                       <div class="dele-btn-groups">
+                           <span class="sure-dele" @click="sureDele">确定</span>
+                           <span class="cancle-dele" @click="cancleDele">取消</span>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </transition>
+         <!--loading模态框 -->
+        <div class="loading-block">
+            <div class="wrap">
+                <div class="loading-wraps"><img src="images/loding_web.gif" alt=""></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/coupleApp/index.js"></script>

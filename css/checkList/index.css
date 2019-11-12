@@ -1,0 +1,76 @@
+.container{
+    height: calc(100% - 2rem);
+    min-height: auto;
+    padding-top: 1rem;
+}
+.task-bar{
+    width: 100%;
+    height: 1.8rem;
+    /* border:1px solid #0077ff; */
+    margin: 0 auto;
+    border-radius: .15rem;
+    margin-bottom: 1rem;
+    padding: 0 !important;
+    box-sizing: content-box !important;
+}
+.bar-list{
+    display: flex;
+}
+.bar-list li{
+    flex: 1;
+    text-align: center;
+    line-height: 1.8rem;
+    color: #0077ff;
+    font-size: .75rem;
+}
+.bar-list li.on{
+    background: #0077ff;
+    color: #fff;
+   
+}
+.task-list-block{
+    position: relative;
+    height: calc(100% - 3rem);
+    overflow: hidden;
+}
+.task-list li{
+    margin-bottom: .6rem;
+}
+.task-item-bar{
+    border-bottom: 1px solid #8a8a8a;
+    padding-bottom: .3rem;
+}
+.task-icon{
+    display: inline-block;
+    width: 1rem;
+    vertical-align: middle;
+}
+.task-contents{
+    padding-top: .3rem;
+}
+.task-line{
+    display: flex;
+    line-height: 1rem;
+    color: #888;
+}
+.label{
+    width: 3.5rem;
+}
+.check-person{
+    width: 13rem;
+}
+.device-name{
+    width: 10rem;
+}
+.device-addr{
+    width: 13rem;
+}
+.addTime{
+    width: 4.5rem;
+}
+.task-txt{
+    font-size: .75rem;
+}
+.device-addr{
+    width: 14rem;
+}

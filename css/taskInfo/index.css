@@ -1,0 +1,135 @@
+
+.container{
+    /* min-height: calc(100% - 2rem); */
+    height: auto;
+}
+
+.task-content{
+    border-top:1px solid #e0e0e0;
+    border-bottom:1px solid #e0e0e0;
+}
+img{
+    vertical-align: middle
+}
+.infomation-bar{
+    line-height: 2rem;
+}
+.info-icon{
+    display: inline-block;
+    width: .8rem;
+}
+.info-icon img{
+    margin-top: -0.2rem;
+}
+.task-row{
+    display: flex;
+    line-height: 1.5rem;
+    margin-bottom: .3rem;
+}
+.task-label{
+    width: 3rem;
+}
+.task-value{
+    color: #8a8a8a;
+    margin-left: .3rem;
+    width: 14rem;
+}
+.btn-section{
+    border-top:1px solid #e0e0e0;
+    border-bottom:1px solid #e0e0e0;
+}
+.btn-list{
+    display: flex;
+}
+.btn-list li{
+    flex: 1;
+    line-height: 2rem;
+    text-align: center;
+}
+.btn-list li:first-child{
+    border-right: 1px solid #e0e0e0;
+    box-sizing: border-box;
+}
+.btn-list li.on{
+    color: #1890ff;
+}
+.recor-info{
+    display: flex;
+    line-height: 2rem;
+}
+.record-value{
+    width: 15rem;
+}
+.record-label{
+    flex: 1;
+}
+.sure-btn{
+   margin-top: 3rem;
+}
+
+.caseInfo-wraps{
+    width: 15rem;
+}
+.caseInfo-icon{
+    display: inline-block;
+}
+.caseInfo-icon img {
+    width: 1rem;
+    vertical-align: middle;
+}
+.speaking {
+    padding: .3rem .6rem;
+    border-radius: 3px;
+    background: #dadada;
+    color: #999;
+    margin-left: .5rem;
+    vertical-align: middle;
+}
+.voice-wrpas {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .5rem;
+    background: #dadada;
+    padding: .1rem .8rem;
+    color: #999;
+    border-radius: 3px;
+}
+.voice-wrpas img {
+    width: .8rem;
+    vertical-align: middle;
+}
+.voice-wrpas strong {
+    font-weight: normal;
+}
+.device-pic-list{
+    display: flex;
+    padding: .5rem;
+    box-sizing: border-box;
+    border: 1px solid #8a8a8a;
+    border-radius: 2px;
+    flex-wrap: wrap;
+}
+.upload-title{
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+.upload-block{
+    padding-top: .5rem;
+}
+.device-pic-wrap{
+    width: 4.7rem;
+    height: 4.5rem;
+    padding: 0 .3rem;
+}
+.pic-container{
+    height: 100%;
+    overflow: hidden;
+    border-radius: 3px;
+}
+.pic-container img{
+    height: 100%;
+    width: 100%;
+}
+.none{
+    margin-right: 0;
+}

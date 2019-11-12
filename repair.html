@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我要报修</title>
+    <link rel="stylesheet" href="css/common/common.css?v=1.2">
+    <link rel="stylesheet" href="css/common/switch.css">
+    <link rel="stylesheet" href="css/repair/index.css?v=1.2">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="container">
+            <div class="block" style="padding-bottom: 1rem;">
+                <div class="title-bar">
+                    <span class="title-tags">请选择报修紧急情况</span>
+                    <div class="title-icon fr">
+                        <img src="images/question.png" alt="">
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <div class="case-block">
+                    <div class="case-row">
+                        <span class="case-label">紧急</span>
+                        <span class="case-choose  fr">
+                            <input type="checkbox" id="switch-for" class="switch-ipt hidden" v-model="serious" value="2" @change="seleLevel"/>
+                            <label for="switch-for" class="switch-label"></label>
+                        </span>
+                    </div>
+                </div>
+                <div class="caseInfo-block">
+                    <div class="caseInfo-row">
+                        <span class="caseInfo-label">设备</span>
+                        <div class="caseInfo-wraps wrap">
+                            <input type="text" v-model="device.device_name" class="caseInfo-values device-values" placeholder="请选择缺陷设备的名称" disabled />
+                            <div class="sele-block" @click="chooseDevice">
+                                <span>选择设备</span>
+                                <span class="sele-icon"><img src="images/right.png" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caseInfo-row">
+                        <span class="caseInfo-label">地点</span>
+                        <div class="caseInfo-wraps"><input type="text" v-model="device.device_addr" class="caseInfo-values" placeholder="请输入缺陷设备所在地点" disabled></div>
+                    </div>
+                    <div class="caseInfo-row">
+                        <span class="caseInfo-label">报送</span>
+                        <div class="caseInfo-wraps wrap">
+                            <input type="text" v-model="device.group_name" class="caseInfo-values device-values" placeholder="请选择维修分组" disabled />
+                            <div class="sele-block" @click="chooseGroup">
+                                <span>选择维修组</span>
+                                <span class="sele-icon"><img src="images/right.png" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caseInfo-row">
+                        <span class="caseInfo-label">描述</span>
+                        <div class="caseInfo-wraps"><input type="text" v-model="device.device_desc" class="caseInfo-values" placeholder="请对缺陷情况进行适当描述"></div>
+                    </div>
+                    <div class="caseInfo-row">
+                        <span class="caseInfo-label">语音</span>
+                        <div class="caseInfo-wraps">
+                            <span class="caseInfo-icon" @click="recordVoice"><img src="images/voice.png" alt=""></span>
+                            <span class="speaking" @touchstart="speaking" @touchend="speakingEnd" v-show="isSpeak" v-text="speakTxt"></span>
+                            <span class="voice-wrpas" v-show="hasVoice" @click="playVoice"><img src="images/voice2.png" alt=""><strong v-text="rec_time"></strong>"</span>
+                        </div>
+                    </div>
+                    <div class="caseInfo-row">
+                        <span class="caseInfo-label">拍照</span>
+                        <div class="caseInfo-wraps" @click="choosePicture"><span class="caseInfo-icon"><img src="images/camera.png" alt=""></span></div>
+                    </div>
+                    <div class="upload-block">
+                        <div class="device-pic-list" v-show="upPic.length">
+                            <div class="device-pic-wrap" v-for="(item,index) in upPic" 
+                            @touchstart="touchStr(index)" @touchend="touchEnded">
+                                <div class="wrap">
+                                    <div class="pic-container">
+                                        <img :src="item" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="repair-info-section">
+                        <p><span class="repair-info-label">报修人:</span><span>{{realname}}</span></p>
+                        <p><span class="repair-info-label">报修单位:</span><span>{{firm_name}}</span></p>
+                    </div>
+                    <!-- <div>{{sourceId}}</div> -->
+                    <div class="btn-block"><button class="button sure-btn" @click="apply" :disabled="isUse">上报</button></div>
+                </div>
+            </div>
+            
+        </div>
+         <!--删除图片模态框-->
+         <transition name="fade">
+            <div class="dele-pic-block" v-show="isDele">
+               <div class="wrap">
+                   <div class="dele-box">
+                       <p class="dele-title">确认</p>
+                       <p class="dele-text">确认删除该照片吗?</p>
+                       <div class="dele-btn-groups">
+                           <span class="sure-dele" @click="sureDele">确定</span>
+                           <span class="cancle-dele" @click="cancleDele">取消</span>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </transition>
+         <!--loading模态框 -->
+         <transition name="fade">
+            <div class="loading-block" v-show="loading">
+                <div class="wrap">
+                    <div class="loading-wraps"><img src="images/loding_web.gif" alt=""></div>
+                </div>
+            </div>
+        </transition>
+        <!--登录模态框 -->
+        <transition name="fade">
+            <div class="logining-block" v-show="logining">
+                <div class="wrap">
+                    <div class="logining-wraps">正在登录中...</div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/repair/index.js"></script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>公告</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/notice/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="container">
+            <div class="notice-block" ref="notice_block">
+                <div class="refresh-wrapper">
+                    <div class="refersh">
+                        <ul class="notice-list" ref="notice_list">
+                            <li v-for="(item,index) in noticeList" class="block">
+                                <h2 class="notice-title">{{item.title}}</h2>
+                                <p class="notice-contents">{{item.content}}</p>
+                                <div class="notice-bottom">
+                                    <div class="fl">发布时间：<span>{{formatTime(item.addtime)}}</span></div>
+                                    <div class="fr" @click="lookInfo(item.bulletin_id)">
+                                        <span>查看详情</span>
+                                        <span class="right-icon"><img src="images/right.png" alt=""></span>
+                                    </div>
+                                    <div class="cl"></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="noneData" v-if="!noticeList.length">暂无数据</p>
+                        <div class="bottom-tip" v-show="noticeList.length">
+                            <span class="loading-hook">{{loadingTxt}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/bscroll.min.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/notice/index.js"></script>

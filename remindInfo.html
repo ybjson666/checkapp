@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>催单详情</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/remindInfo/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="container">
+            <div class="remind-block block">
+                <p class="remind-title">催单信息</p>
+                <div class="remind-content">
+                    <div class="remind-row">
+                        <span class="remind-label">催单人:</span>
+                        <span class="remind-value">{{remind.realname}}</span>
+                    </div>
+                    <div class="remind-row">
+                        <span class="remind-label">催单时间:</span>
+                        <span class="remind-value">{{formatTime(remind.reminder_time)}}</span>
+                    </div>
+                    <div class="remind-row">
+                        <span class="remind-label">留言:</span>
+                        <span class="remind-value">{{remind.reminder_content}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="repair-block block">
+                <div class="repair-bar">
+                    <span>原报修信息</span>
+                    <div class="fr">
+                        <span>报修单号:</span>
+                        <span>{{remind.device_num}}</span>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <div class="repair-content">
+                    <div class="remind-row">
+                        <span class="remind-label">报修人:</span>
+                        <span class="remind-value">{{remind.realname}}</span>
+                    </div>
+                    <div class="remind-row">
+                        <span class="remind-label">报修时间:</span>
+                        <span class="remind-value">{{formatTime(remind.addtime)}}</span>
+                    </div>
+                    <div class="remind-row">
+                        <span class="remind-label">报修设备:</span>
+                        <span class="remind-value">{{remind.name}}</span>
+                    </div>
+                    <div class="remind-row">
+                        <span class="remind-label">描述:</span>
+                        <span class="remind-value">{{remind.describe}}</span>
+                    </div>
+                    <div class="remind-row">
+                        <span class="reapir-label">照片：</span>
+                        <div class="repair-value">
+                            <div class="img-container">
+                                <span class="device-img-value" v-for="item in upPic"><img :src="item" alt=""></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/remindInfo/index.js"></script>

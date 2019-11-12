@@ -1,0 +1,28 @@
+.container{
+   height: 100%;
+   margin: 0 auto;
+}
+.contents{
+    width: 100%;
+    height: 100%;
+}
+.contents-wraps{
+    width: 10rem;
+    margin: 0 auto;
+    padding-top: 3rem;
+}
+.contents-wraps p{
+    text-align: center;
+    color: #666;
+    margin-bottom: 1rem;
+}
+.contents-wraps div a{
+    display: block;
+    width: 9rem;
+    height: 1.2rem;
+    text-align: center;
+    line-height: 1.2rem;
+    color: #fff;
+    background: #1890ff;
+    border-radius: 3px;
+}

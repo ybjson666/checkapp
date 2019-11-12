@@ -1,0 +1,46 @@
+.container{
+    min-height: calc(100% - 2rem);
+}
+.rows{
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: .5rem;
+    padding-bottom: .2rem;
+}
+.labels{
+    flex: 1;
+    line-height: 1.25rem;
+}
+.row-input{
+    width: 13rem;
+    height: 1.25rem;
+}
+.pic-icon{
+    width: 1.2rem;
+    display: block;
+}
+.device-pic-list{
+    display: flex;
+}
+.device-pic-wrap{
+    width: 5.3rem;
+    margin-right: .5rem;
+    height: 5.3rem;
+}
+.pic-container{
+    height: 5.3rem;
+    overflow: hidden;
+    border-radius: .2rem;
+}
+.pic-container img{
+    height: 100%;
+}
+.device-pic-wrap:last-child{
+    margin-right: 0;
+}
+.pub-btn{
+    width: 12rem;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    border-radius: 1rem;
+}

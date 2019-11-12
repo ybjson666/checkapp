@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>疑难解答</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/question/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="contents">
+            <p class="title">常见问题</p>
+            <div class="question-block">
+                <ul class="question-list">
+                    <li v-for="(item,index) in questionList" @click="seekInfo(item.puzzle_id)">
+                        <span class="question-name">{{index+1}}. {{item.puzzle_name}}</span>
+                        <span class="icon"><img src="images/icon_back.png" alt=""></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/question/index.js"></script>

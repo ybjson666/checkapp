@@ -1,0 +1,15 @@
+.container{
+    height: 100%;
+    background: #7fcfff;
+    padding-top: 2rem;
+}
+.warn-icon{
+    width: 1.5rem;
+    margin:0 auto;
+    margin-bottom: 1rem;
+}
+.warn-text{
+    text-align: center;
+    color: #fff;
+    font-size: .8rem;
+}

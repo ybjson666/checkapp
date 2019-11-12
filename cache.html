@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+    
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script>
+ var params=getRequest(); 
+ var rt_id=params.rt_id;
+ var rtf_id=params.rtf_id;
+ function fetchData(){
+        var _this=this;
+        var postParams={
+            datas:{
+                app_version,
+                port,
+                token,
+                type,
+                rt_id:rt_id,
+            },
+            url:"/timeRepair/RepairDevice"
+        }
+        requestFunc(postParams).then(function(data){
+            if(data.code==200){
+                if(data.data.status=='3'){
+                    window.location.href='taskInfo.html?rt_id='+rt_id+'&rtf_id'+rtf_id;
+                }else{
+                    window.location.href='checkInfo.html?rt_id='+rt_id;
+                }
+            }
+        })
+    }
+
+    fetchData();
+</script>

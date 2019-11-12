@@ -1,0 +1,108 @@
+.theme-radio {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    z-index: 1;
+    background-image: url('../../images/img/kuang.png');
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 100% 100%;
+}
+
+.theme-radio input[type=radio] {
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+
+.theme-radio input[type=radio]:checked + .icon-radio {
+  display: block;
+}
+
+.theme-radio .icon-radio {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url('../../images/img/gou2.png');
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+}
+
+
+.theme-checkbox {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    border: 1px solid #c8c8c8;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    vertical-align: middle;
+}
+.theme-checkbox input[type=checkbox] {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: url('../../images/img/kuang.png');
+    background-size: 100% 100%;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+.theme-checkbox input[type=checkbox]:checked + .icon-check {
+    display: block;
+    -webkit-animation: fadeYIn .2s ease;
+    animation: fadeYIn 0.2s ease;
+}
+.theme-checkbox .icon-check {
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url('../../images/img/gou2.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100% 100%;
+}
+
+/* keyframes */
+@-webkit-keyframes fadeYIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeYIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}

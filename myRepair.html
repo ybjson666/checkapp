@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的报修</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/myRepair/index.css?v=1.2">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>报单详情</h2>
+        </div>
+        <div class="container">
+            <div class="repair-bar block">
+                <div class="fl">
+                    <span class="repair-icon"><img src="images/title.png" alt=""></span>
+                    <span>报修信息</span>
+                </div>
+                <div class="fr">
+                    <span>报修单号:</span>
+                    <span >{{repair.device_num}}</span>
+                </div>
+                <div class="cl"></div>
+            </div>
+            <div class="repair-contents block">
+                <div class="repair-row">
+                    <span class="reapir-label">设备：</span>
+                    <div class="repair-value">
+                        <span>{{repair.address}}</span>
+                        [<span>{{repair.de_name}}</span>]
+                    </div>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">描述：</span>
+                    <span class="repair-value">{{repair.describe}}</span>
+                </div>
+                <div class="repair-row" v-show="upPic.length">
+                    <span class="reapir-label">照片：</span>
+                    <div class="repair-value">
+                        <div class="img-container">
+                            <span class="device-img-value" v-for="item in upPic" @click="scanImg(item)"><img :src="item" alt=""></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repair-row" v-show="repair.describe_voice">
+                    <span class="reapir-label">语音：</span>
+                    <div class="repair-value">
+                        <div class="voice-icon">
+                            <div class="voice-icon-wraps" v-show="!isPlay" @click="plays">
+                                <img src="images/voice2.png" alt="">
+                            </div>
+                            <div class="gif-wraps" v-show="isPlay" @click="pauses">
+                                <div class="voice-gif">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span>点击停止</span>
+                            </div>
+                        </div>
+                        <!-- <audio class="audios"  :src="repair.describe_voice" ref="players"></audio> -->
+                    </div>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">报修人：</span>
+                    <span class="repair-value">{{repair.realname}}</span>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">报修时间：</span>
+                    <span class="repair-value">{{formatTime(repair.addtime)}}</span>
+                </div>
+            </div>
+            <div class="service-container block" v-show="repair.status!='1'">
+                <div class="repair-bar">
+                    <span class="repair-icon"><img src="images/title.png" alt=""></span>
+                    <span>维修信息</span>
+                </div>
+                <div class="service-contents">
+                    <div class="row">
+                        <div class="repair-row">
+                            <span class="reapir-label">受理人：</span>
+                            <span class="receptior">{{recepitor.assign_user}}</span>
+                            <span class="recept-phone">{{recepitor.assign_user_phone}}</span>
+                        </div>
+                        <div class="repair-row">
+                            <span class="reapir-label">受理时间：</span>
+                            <span class="repair-time">{{formatTime(recepitor.addtime)}}</span>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="repair-row">
+                            <span class="reapir-label">维修人</span>
+                            <span class="receptior">李逍遥</span>
+                            <span class="recept-phone">15881020630</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="repair-row">
+                            <span class="reapir-label">维修时间：</span>
+                            <span class="repair-time">2019-05-22</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="repair-row">
+                            <span class="reapir-label">描述：</span>
+                            <span class="repair-time">打印架好爱卡机打印架好爱卡机打印架好爱卡机打印架好爱卡机打印架好爱卡机</span>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="repair-bar" v-show="recordList.length">
+                    <span class="repair-icon"><img src="images/Clock.png" alt=""></span>
+                    <span>补充记录</span>
+                    <span>{{recordList.length}}</span>
+                </div>
+                <div class="record-list-block" v-show="recordList.length">
+                    <ul class="record-list">
+                        <li v-for="item in recordList">
+                            <span class="user-icon"><img src="images/user.png" alt=""></span>
+                            <div class="record-contents">
+                                <div class="record-top">
+                                    <span class="user-name">{{item.realname}}</span>
+                                    <span class="record-time">{{formatTime(item.addtime)}}</span>
+                                </div>
+                                <p class="record-detail">{{item.note}}</p>
+                                <div class="record-others" v-show="item.img || item.voice">
+                                    <span class="record-pic" @click="scanImg2(item.img)">照片({{item.img.indexOf(',')==-1?1:item.img.split(",").length}})</span>
+                                    <span class="record-voice" @click="goPlay(item.voice)">语音(1)</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <button class="button sub-btn" @click="confirmFunc" v-show="repair.status=='5'">确认提交</button>	
+        </div>
+        <div class="nav-bar" v-show="repair.status=='1' || repair.status=='2'">
+            <ul class="navs">
+                <!-- <li>
+                    <a href="javascript:" @click="goReminder">
+                        <span class="nav-icon"><img src="images/clock2.png" alt=""></span>
+                        <span>我要催单</span>
+                    </a>
+                </li> -->
+                <li v-show="repair.status=='1'">
+                    <a href="javascript:" @click="goRepeal">
+                        <span class="nav-icon"><img src="images/cancle.png" alt=""></span> 
+                        <span>撤销报修</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:" @click="goEdit">
+                        <span class="nav-icon"><img src="images/edit.png" alt=""></span>
+                        <span>更改内容</span>   
+                    </a>
+                </li>
+            </ul>
+        </div>
+          <!--loading模态框 -->
+          <transition name="fade">
+            <div class="loading-block" v-show="loading">
+                <div class="wrap">
+                    <div class="loading-wraps"><img src="images/loding_web.gif" alt=""></div>
+                </div>
+            </div>
+        </transition>
+        <!--播放语音弹框-->
+        <transition name="fade">
+            <div class="voice-section" v-show="palyTags">
+                <div class="voice-wraper">
+                    <div class="voice-icon">
+                        <div class="voice-icon-wraps" v-show="!isPlaying" @click="playVoice">
+                            <img src="images/voice2.png" alt="">
+                        </div>
+                        <div class="gif-wraps" v-show="isPlaying" @click="pauseVoice">
+                            <div class="voice-gif">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <span>点击停止</span>
+                        </div>
+                    </div>
+                    <span class="close-voice" @click="hideVoice">关闭</span>
+                </div>
+            </div>
+        </transition>
+          <!--提交模态框 -->
+          <transition name="fade">
+            <div class="confirm-block" v-show="isConfirm">
+                <div class="wrap">
+                    <div class="confirm-wraps">
+                        <p class="confirm-title">是否确认？</p>
+                        <div class="confirm-bottom">
+                            <span class="confirm-btn cancel-btn" @click="cancelFunc">取消</span>
+                            <span class="confirm-btn" @click="sureFunc">确认</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/myRepair/index.js"></script>

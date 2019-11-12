@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设备列表</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/deviceList/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>设备列表</h2>
+            <div class="add-device" @click="addDevices">+ 添加设备</div>
+        </div>
+        <div class="device-bar">
+            <div class="device-icon-wraps fr" @click="seleTypes">
+                <img src="images/dot-circle.png" alt="" class="device-icon">
+                <span class="device-txts" :class="{on:device_type=='1'}">{{type_text}}</span>
+            </div>
+            <div class="cl"></div>
+        </div>
+        <div class="container block">
+            <div class="device-block" ref="device_block">
+                <div class="refresh-wrapper">
+                    <div class="refersh">
+                        <ul class="device-list" ref="device_list">
+                            <li v-for="item in deviceList" @click="seleDevice(item)">
+                                <span class="fl">{{item.name}}</span>
+                                <span class="fr">{{formatTime(item.addtime)}}</span>
+                                <div class="cl"></div>
+                            </li>
+                        </ul>
+                        <p class="noneData" v-if="!deviceList.length">暂无数据</p>
+                        <div class="bottom-tip" v-show="deviceList.length">
+                            <span class="loading-hook">{{loadingTxt}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/bscroll.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/deviceList/index.js"></script>

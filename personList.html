@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>选择人员</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/personList/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>人员选择</h2>
+        </div>
+        <div class="container block">
+            <div class="device-block">
+                <ul class="person-list">
+                    <li v-for="item in personList">
+                        <p class="user-tags">{{item.letter}}</p>
+                        <div class="user-list">
+                            <div class="user-item" v-for="user in item.arr" @click="selePerson(user)">
+                                <div class="user-icon">
+                                    <img :src="user.pic_head" alt="" v-if="user.pic_head">
+                                    <img src="images/user.png" alt="" v-else>
+                                </div>
+                                <span class="user-name">{{user.realname}}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <p class="noneData" v-if="!personList.length">暂无数据</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/personList/index.js"></script>

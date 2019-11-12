@@ -1,0 +1,36 @@
+.user-icon{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: .8rem;
+    margin-top: .25rem;
+}
+.user-icon img{
+    height: 100%;
+}
+.device-block{
+    padding-top: .5rem;
+}
+.person-list li{
+    margin-bottom: .5rem;
+}
+.user-tags{
+    background: #eaeaea;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    padding: 0 .5rem;
+    box-sizing: border-box;
+    color: #666;
+    font-size: .75rem;
+
+}
+.user-item{
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    background: #fff;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    padding: 0 .5rem;
+    box-sizing: border-box;
+}

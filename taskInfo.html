@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设备点检</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/taskInfo/index.css?v=1.2">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <!-- <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>点检详情</h2>
+        </div> -->
+        <div class="container wrap">
+            <div class="infomation-block block">
+                <div class="infomation-bar">
+                    <span class="info-icon"><img src="images/title.png" alt=""></span>
+                    <span class="info-tags">设备信息</span>
+                </div>
+                <div class="task-content">
+                    <div class="task-row">
+                        <span class="task-label">设备名称:</span>
+                        <span class="task-value">{{task.device_name}}</span>
+                    </div>
+                    <div class="task-row">
+                        <span class="task-label">点检名称:</span>
+                        <span class="task-value">{{task.name}}</span>
+                    </div>
+                    <div class="task-row">
+                        <span class="task-label">周期:</span>
+                        <span class="task-value">{{task.frequency}}</span>
+                    </div>
+                    <div class="task-row">
+                        <span class="task-label">时间:</span>
+                        <span class="task-value">{{formatTime(task.addtime)}}</span>
+                    </div>
+                    <!-- <div class="task-row">
+                        <span class="task-label">基准:</span>
+                        <span class="task-value"></span>
+                    </div> -->
+                </div>
+            </div>
+            <div class="record-block block">
+                <div class="infomation-bar record-bar">
+                    <span class="info-icon"><img src="images/Clock.png" alt=""></span>
+                    <span class="info-tags">点检记录</span>
+                </div>
+                <div class="btn-section">
+                    <ul class="btn-list">
+                        <li v-for="(item,index) in btnGroups" :class="{on:index==cur_index}" @click="seleType(item.type,index)"><span>{{item.name}}</span></li>
+                    </ul>
+                </div>
+              
+                <div class="recor-info" v-show="record_type==0">
+                    <span class="record-label">记录</span>
+                    <input type="text" class="record-value" v-model="record" placeholder="请记录数值" onkeyup="value=value.match(/\d+\.?\d{0,2}/,'')">
+                </div>
+                <div class="error-section" v-show="record_type==1">
+                    <div class="recor-info">
+                        <span class="record-label">描述</span>
+                        <input type="text" class="record-value" v-model="record" placeholder="请对缺陷情况进行适当的描述">
+                    </div>
+                    <div class="recor-info">
+                        <span class="record-label">语音</span>
+                        <div class="caseInfo-wraps">
+                            <span class="caseInfo-icon" @click="recordVoice"><img src="images/voice.png" alt=""></span>
+                            <span class="speaking" @touchstart="speaking" @touchend="speakingEnd" v-show="isSpeak" v-text="speakTxt"></span>
+                            <span class="voice-wrpas" v-show="hasVoice" @click="playVoice"><img src="images/voice2.png" alt=""><strong v-text="rec_time"></strong>"</span>
+                        </div>
+                    </div>
+                    <div class="recor-info">
+                        <span class="record-label">拍照</span>
+                        <div class="caseInfo-wraps" @click="choosePicture"><span class="caseInfo-icon"><img src="images/camera.png" alt=""></span></div>
+                    </div>
+                    <div class="upload-block">
+                        <div class="device-pic-list" v-show="upPic.length">
+                            <div class="device-pic-wrap" v-for="(item,index) in upPic" 
+                            @touchstart="touchStr(index)" @touchend="touchEnded">
+                                <div class="wrap">
+                                    <div class="pic-container">
+                                        <img :src="item" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <span class="button sure-btn" @click="publish">确定</span>
+        </div>
+         <!--loading模态框 -->
+         <transition name="fade">
+            <div class="loading-block" v-show="loading">
+                <div class="wrap">
+                    <div class="loading-wraps"><img src="images/loding_web.gif" alt=""></div>
+                </div>
+            </div>
+        </transition>
+         <!--删除图片模态框-->
+         <transition name="fade">
+            <div class="dele-pic-block" v-show="isDele">
+               <div class="wrap">
+                   <div class="dele-box">
+                       <p class="dele-title">确认</p>
+                       <p class="dele-text">确认删除该照片吗?</p>
+                       <div class="dele-btn-groups">
+                           <span class="sure-dele" @click="sureDele">确定</span>
+                           <span class="cancle-dele" @click="cancleDele">取消</span>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/taskInfo/index.js"></script>

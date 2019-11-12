@@ -1,0 +1,129 @@
+.deviceInfo-bar{
+    height: 2.5rem;
+    border-bottom: 1px solid #8a8a8a;
+    line-height: 2.5rem;
+}
+.setting-icon{
+    display: inline-block;
+    width: 1rem;
+    line-height: 2.5rem;
+}
+.setting-icon img{
+    vertical-align: middle;
+}
+.stop-button{
+    position: absolute;
+    right: .5rem;
+    top:0.6rem;
+    width: 3rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+.setting-label{
+    vertical-align: middle;
+}
+.deviceInfo-content{
+    border-bottom: 1px solid #8a8a8a;
+    margin: .5rem 0;
+}
+.device-rows{
+    line-height: 1.5rem;
+}
+.device-label{
+    color: #8a8a8a;
+}
+.device-values{
+    color: #333;
+    margin-left: .2rem;
+}
+.task-bar{
+    border-bottom: 1px solid #8a8a8a;
+    margin-bottom: .5rem;
+}
+.task-row{
+    line-height: 1.5rem;
+    margin-bottom: .5rem;
+}
+.task-icon{
+    display: inline-block;
+    width: 1rem;
+}
+.task-icon img{
+    vertical-align: middle;
+    margin-top: -.1rem;
+}
+.task-tags{
+    font-size: .75rem;
+}
+.error-icon{
+    display: inline-block;
+    width: .8rem;
+}
+.error-icon img{
+    vertical-align: middle;
+    margin-top: -.1rem;
+}
+.error-info{
+    color: #8a8a8a;
+}
+.task-list{
+    padding-top: .8rem;
+}
+.task-list li{
+    display: flex;
+    margin-bottom: .5rem;
+    padding: 0 .3rem;
+    box-sizing: border-box;
+}
+.task-type{
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    border: 1px solid #8a8a8a;
+    text-align: center;
+    line-height: 1.8rem;
+    box-sizing: border-box;
+    margin-right: .5rem;
+    margin-top: .6rem;
+}
+.task-infos{
+    width: 10rem;
+    margin-right: .5rem;
+}
+.task-infos p{
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.5rem;
+}
+.task-status{
+    width: 4rem;
+    line-height: 3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.task-contents{
+    height: 11rem;
+    position: relative;
+}
+.btn-section{
+    display: flex;
+    width: 14rem;
+    margin: 0 auto;
+    margin-top: 2.5rem;
+}
+.btn-section span{
+    flex: 1;
+}
+.btn-section .skips{
+    margin-right: .8rem;
+    background: orange;
+}
+.bottom-tip{
+    background: #fff;
+}
+.block{
+    padding: 0 .3rem;
+}

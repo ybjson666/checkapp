@@ -1,0 +1,24 @@
+
+.container{
+    min-height: calc(100% - 2rem);
+    padding-top: 1rem;
+    box-sizing: border-box;
+    background: #fff;
+}
+.title{
+    text-align: center;
+    font-size: .75rem;
+    margin-bottom: .5rem;
+}
+.pub-time-wrap{
+    text-align: center;
+    color: #8a8a8a;
+}
+.question-contents{
+    margin-top: 2rem;
+}
+.question-contents p{
+    color: #777;
+    line-height: 1.2rem;
+    text-align: justify;
+}

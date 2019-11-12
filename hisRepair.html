@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>历史报修单</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/hisRepair/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="container">
+            <div class="btn-block block">
+                <ul class="btn-list">
+                    <li v-for="(item,index) in btnGroups" :class={on:index==curIndex} @click="seleType(index,item.type)">
+                        <span>{{item.name}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="record-block block">
+                <div class="record-bar">
+                    <div class="record-nums-wrap fl">共<span class="record-nums">{{totalCount}}</span>条记录</div>
+                    <div class="order-wrap fr" @click="changeOrder">
+                        <span class="order-icon" ref="orders"><img src="images/order.png" alt=""></span>
+                        <span>{{order_text}}</span>
+                    </div>
+                    <div class="cl"></div>
+                </div>
+                <div class="record-list-wraper" ref="listWraper">
+                        <div class="refresh-wrapper">
+                            <div class="refersh">
+                                <ul class="record-list" ref="list">
+                                    <li v-for="item in recordList">
+                                        <div class="record-infos" @click="seekInfo(item.re_id)">
+                                            <p>
+                                                <span class="record-attr">{{item.address}}</span>
+                                                [<span class="record-title">{{item.de_name}}</span>] 问题：
+                                                <span class="record-desc">{{item.describe}}</span>
+                                            </p>
+                                            <p><span class="record-time">{{formatTime(item.addtime)}}</span></p>
+                                        </div>
+                                        <div class="record-right">
+                                            <span class="record-status fr unack" v-if="item.status=='1'">未完成</span>
+                                            <span class="record-status green fr" v-else-if="item.status=='2'">已受理</span>
+                                            <span class="record-status fr" v-else-if="item.status=='3'">已完成</span>
+                                            <span class="record-status fr" v-else-if="item.status=='4'">已撤销</span>
+                                            <span class="record-status unack fr" v-else-if="item.status=='5'" @click="confirmFunc(item.re_id)">待确认</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <p class="noneData" v-if="!recordList.length">暂无数据</p>
+                                <div class="bottom-tip" v-show="recordList.length">
+                                    <span class="loading-hook">{{loadingTxt}}</span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!--登录模态框 -->
+        <transition name="fade">
+            <div class="logining-block" v-show="logining">
+                <div class="wrap">
+                    <div class="logining-wraps">正在登录中...</div>
+                </div>
+            </div>
+        </transition>
+         <!--提交模态框 -->
+         <transition name="fade">
+            <div class="confirm-block" v-show="isConfirm">
+                <div class="wrap">
+                    <div class="confirm-wraps">
+                        <p class="confirm-title">是否确认？</p>
+                        <div class="confirm-bottom">
+                            <span class="confirm-btn cancel-btn" @click="cancelFunc">取消</span>
+                            <span class="confirm-btn" @click="sureFunc">确认</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/bscroll.min.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/hisRepair/index.js"></script>

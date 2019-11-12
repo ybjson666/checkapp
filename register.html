@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>填写注册信息</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/register/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="container">
+            <div class="logo">
+                <span>鑫点检修</span>
+            </div>
+            <div class="contents block">
+                <div class="row">
+                    <span class="icon"><img src="images/phone.png" alt=""></span>
+                    <div class="row-wraps wrap">
+                        <input type="number" class="row-input" placeholder="请输入手机号码" v-model="user_phone" oninput="if(value.length>11) value=value.slice(0,11)"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icon"><img src="images/company_name.png" alt=""></span>
+                    <div class="row-wraps wrap">
+                        <input type="text" class="row-input" placeholder="请输入公司名称" v-model="company_name" :disabled="isRecommen"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icon"><img src="images/username.png" alt=""></span>
+                    <div class="row-wraps wrap">
+                        <input type="text" class="row-input" placeholder="请输入姓名" v-model="user_name" />
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icon"><img src="images/password.png" alt=""></span>
+                    <div class="row-wraps wrap">
+                        <input type="password" class="row-input" placeholder="请输入密码" v-model="user_pwd" />
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icon"><img src="images/password.png" alt=""></span>
+                    <div class="row-wraps wrap">
+                        <input type="password" class="row-input" placeholder="请再次输入密码" v-model="user_pwd_again" />
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icon"><img src="images/code.png" alt=""></span>
+                    <div class="row-wraps wrap">
+                        <input type="text" class="row-input picture_input" placeholder="请输入图形验证码" v-model="pic_codes">
+                        <span class="icon-wrap" @click="getPictureCode" v-if="picture_code">
+                            <img :src="picture_code" alt="" width="40">
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="icon"><img src="images/code.png" alt=""></span>
+                    <div class="row-wraps wrap">
+                        <input type="number" class="row-input info-input" placeholder="请输入短信验证码" v-model="info_code" oninput="if(value.length>6) value=value.slice(0,6)">
+                        <button class="icon-wrap code-wraps" @click="getCodes" v-text="code_txt" :disabled="isUse"></button>
+                    </div>
+                </div>
+                <button class="button reg-btn" :disabled="isFlag" @click="register">完成注册</button>
+            </div>
+        </div>
+       <!--错误提示弹框-->
+       <transition name=fade>
+            <div class="error-warn-block" v-show="isError">
+                <div class="wrap">
+                    <p class="error-info">{{errors}}</p>
+                </div>
+            </div>
+       </transition>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="js/register/index.js"></script>

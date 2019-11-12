@@ -1,0 +1,79 @@
+.tags{
+    margin-bottom: .5rem;
+}
+.row{
+    display: flex;
+    padding: .3rem 0;
+    border-bottom: 1px solid #999;
+    margin-bottom: .3rem;
+}
+.icon{
+    width: 1.2rem;
+    margin-right: .2rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    overflow: hidden;
+    padding-top: .2rem;
+    box-sizing: border-box;
+}
+.container{
+    padding-top: 2rem;
+    height: 100%;
+}
+.row-wraps{
+    flex: 1;
+    height: 1.5rem;
+}
+.row-input{
+    height: 1.5rem;
+    line-height: 1.5rem;
+    width: 100%;
+    padding-left: .2rem;
+    box-sizing: border-box;
+}
+.icon-wrap{
+    position: absolute;
+    right: .5rem;
+    top:0;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    z-index: 10;
+    border-radius: 3px;
+    padding: 0 .2rem;
+}
+.code-wraps{
+    border:none;
+    background: #1890ff;
+    color: #fff;
+}
+.icon-wrap img{
+    width: 3.5rem;
+    height: 1.5rem;
+    border-radius: 3px;
+}
+.picture_input{
+    padding-right: 3rem;
+}
+.info-input{
+    padding-right: 4rem;
+}
+.alert-words{
+    text-align: right;
+}
+.alert-words a{
+    color: #00c9ff;
+}
+.nextProps{
+    margin-top: 2rem;
+}
+.nextProps a{
+    display: block;
+    width: 10rem;
+    text-align: center;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    margin: 0 auto;
+    color: #fff;
+    background: #1890ff;
+    border-radius: 3px;
+}

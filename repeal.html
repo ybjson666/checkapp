@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的报修</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/common/check.css">
+    <link rel="stylesheet" href="css/repeal/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app"  v-cloak>
+        <div class="header-bar wrap">
+            <span class="return-btn" @click="goBack"><img src="images/left.png" alt=""></span>
+            <h2>撤销报修</h2>
+        </div>
+        <div class="container">
+            <div class="repair-bar block">
+                <div class="fl">
+                    <span class="repair-icon"><img src="images/title.png" alt=""></span>
+                    <span>报修信息</span>
+                </div>
+                <div class="fr">
+                    <span>报修单号:</span>
+                    <span>{{repair.device_num}}</span>
+                </div>
+                <div class="cl"></div>
+            </div>
+            <div class="repair-contents block">
+                <div class="repair-row">
+                    <span class="reapir-label">设备：</span>
+                    <div class="repair-value">
+                        <span>{{repair.address}}</span>
+                        [<span>{{repair.de_name}}</span>]
+                    </div>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">描述:</span>
+                    <span class="repair-value">{{repair.describe}}</span>
+                </div>
+                <div class="repair-row" v-show="upPic.length">
+                    <span class="reapir-label">照片：</span>
+                    <div class="repair-value">
+                        <div class="img-container">
+                            <span class="device-img-value" v-for="item in upPic" @click="scanImg(item)"><img :src="item" alt=""></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="repair-row" v-show="repair.describe_voice">
+                    <span class="reapir-label">语音：</span>
+                    <div class="repair-value">
+                        <div class="voice-icon">
+                            <div class="voice-icon-wraps" v-show="!isPlay" @click="plays">
+                                <img src="images/voice2.png" alt="">
+                            </div>
+                            <div class="gif-wraps" v-show="isPlay" @click="pauses">
+                                <div class="voice-gif">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span>点击停止</span>
+                            </div>
+                        </div>
+                        <audio class="audios"  :src="repair.describe_voice" ref="players"></audio>
+                    </div>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">报修人：</span>
+                    <span class="repair-value">{{repair.realname}}</span>
+                </div>
+                <div class="repair-row">
+                    <span class="reapir-label">报修时间：</span>
+                    <span class="repair-value">{{formatTime(repair.addtime)}}</span>
+                </div>
+            </div>
+            <div class="reason-block block">
+                <p class="reason-title">撤销报单原因</p>
+                <div class="reason-list">
+                    <div class="reason-item">
+                        <span class="reason-label">重复报</span>
+                        <label class="theme-radio"><input type="radio" value="重复报" v-model="reason" name="reason"><i class="icon-radio"></i></label>
+                    </div>
+                    <div class="reason-item">
+                        <span class="reason-label">误报</span>
+                        <label class="theme-radio"><input type="radio" value="误报" v-model="reason" name="reason"><i class="icon-radio"></i></label>
+                    </div>
+                    <div class="reason-item">
+                        <span class="reason-label">其他</span>
+                        <label class="theme-radio"><input type="radio" value="其他" v-model="reason" name="reason"><i class="icon-radio"></i></label>
+                    </div>
+                </div>
+            </div>
+            <div class="remark-block">
+                <p class="remark-title">备注:</p>
+                <textarea v-model="reason_remark" class="remark" placeholder="请输入需要报修的原因(可以不填)"></textarea>
+            </div>
+            <div class="btn-block"><button class="button sure-btn" :disabled="isUse" @click="subRepeal">提交</button></div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/repeal/index.js"></script>

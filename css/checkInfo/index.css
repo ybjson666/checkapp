@@ -1,0 +1,40 @@
+.deviceInfo-bar{
+    height: 2.5rem;
+    border-bottom: 1px solid #8a8a8a;
+    line-height: 2.5rem;
+}
+.setting-icon{
+    display: inline-block;
+    width: 1rem;
+    line-height: 2.5rem;
+}
+.setting-icon img{
+    vertical-align: middle;
+}
+.setting-label{
+    vertical-align: middle;
+}
+.deviceInfo-content{
+    border-bottom: 1px solid #8a8a8a;
+    margin: .5rem 0;
+}
+.device-rows{
+    line-height: 1.5rem;
+}
+.device-label{
+    color: #8a8a8a;
+}
+.device-values{
+    color: #333;
+    margin-left: .2rem;
+}
+.words-block{
+    background: #fff;
+    padding: .5rem ;
+    border-radius: .2rem;
+}
+.words-block p{
+    text-align: justify;
+    color: red;
+    line-height: 1rem;
+}

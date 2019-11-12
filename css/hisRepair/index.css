@@ -1,0 +1,137 @@
+.btn-block{
+    padding: .5rem 0;
+}
+.btn-list{
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+.btn-list li{
+    flex: 1;
+    border-top:1px solid #1890ff;
+    border-bottom:1px solid #1890ff;
+    border-left:1px solid #1890ff;
+    text-align: center;
+    line-height: 1.25rem;
+    box-sizing: border-box;
+    color: #1890ff;
+}
+.btn-list li:last-child{
+    border-right: 1px solid #1890ff;
+}
+.btn-list li.on{
+    background: #1890ff;
+    color: #fff;
+}
+.record-bar{
+    line-height: 2rem;
+    border-bottom: 1px solid #8a8a8a;
+    box-sizing: border-box;
+    height: 2rem;
+}
+.order-wrap{
+    color: #8a8a8a;
+}
+img{
+    vertical-align: middle;
+}
+.order-icon{
+    width: 1rem;
+    display: inline-block;
+    transition: .3s;
+    transform-origin: center center;
+}
+.order-icon img{
+    margin-top: -0.2rem;
+}
+.container{
+    height: 100%;
+}
+.record-block{
+    margin-top: .5rem;
+    height: calc(100% - 2.5rem);
+}
+.record-nums-wrap{
+    color: #8a8a8a;
+}
+.record-nums{
+    color: red;
+    margin: 0 .1rem;
+}
+.record-list-wraper{
+    position: relative;
+    height: calc(100% - 2rem);
+}
+.record-list{
+    padding-top: .8rem;
+}
+.record-list li{
+    margin-bottom: .5rem;
+    display: flex;
+}
+.record-infos{
+    line-height: 1.4rem;
+    width: 14.5rem;
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; */
+}
+.record-right{
+    flex: 1;
+    padding-top: 1.6rem;
+    box-sizing: border-box;
+}
+.record-time{
+    color: #8a8a8a;
+}
+.record-status{
+    color: #999;
+}
+.record-status.unack{
+    color: red;
+}
+.record-status.green{
+    color: green;
+}
+.confirm-block{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    left: 0;
+    top:0;
+}
+.confirm-wraps{
+    position: absolute;
+    background: #fff;
+    padding: .5rem;
+    border-radius: .2rem;
+    left: 50%;
+    width: 12rem;
+    margin-left: -6rem;
+    margin-top: -2.3rem;
+    top:50%;
+}
+.confirm-title{
+    text-align: center;
+    color: #666;
+    font-size: .8rem;
+    margin-bottom: .8rem;
+    line-height: 1.25rem;
+}
+.confirm-bottom{
+    border-top:1px solid #e0e0e0;
+    display: flex;
+}
+.confirm-btn{
+    color: #1890ff;
+    font-size: .75rem;
+    flex: 1;
+    text-align: center;
+    line-height: 1.5rem;
+}
+.cancel-btn{
+    color: #999;
+    border-right: 1px solid #e0e0e0;
+    box-sizing: border-box;
+}

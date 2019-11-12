@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>邀请</title>
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/invite/index.css">
+    <script src="js/common/rem.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="log-block">
+            <p class="title">内部报修平台当前用户数</p>
+            <div class="list">
+                <div class="item">
+                    <div class="cirlce-big">
+                        <div class="circle-smalll">
+                            <span class="checker-manager-nums nums">2</span>
+                        </div>
+                        <div class="tags">检修管理者</div>
+                    </div>
+                    
+                </div>
+                <div class="item">
+                    <div class="cirlce-big">
+                        <div class="circle-smalll">
+                            <span class="checker-nums nums">1</span>
+                        </div>
+                        <div class="tags">检修人员</div>
+                    </div>
+                    
+                </div>
+                <div class="item">
+                    <div class="cirlce-big">
+                        <div class="circle-smalll">
+                            <span class="repairer nums">1</span>
+                        </div>
+                        <div class="tags">报修人</div>
+                    </div>
+                </div>
+            </div>
+            <div class="invite-tags">马上邀请更多同事加入吧！</div>
+        </div>
+        <div class="container">
+            <div class="methords block">
+                <p class="method-title">方式一：“扫二维码”方式</p>
+                <p class="subtitle">此方式仅用于邀请：<span class="blue">报修人</span></p>
+                <p class="method-desc">可以把下面的二维码张贴于各处,请大家用微信“扫一扫扫此
+                        码加入报修平台。已经加入的员工可打开邀请,让其他员工直接扫手机上的二维码加入。</p>
+                <div class="code-wraps"><img :src="code_pic" alt=""></div>
+                <p class="code-txt">长按此二维码，可保存为图片</p>
+            </div>
+            <div class="methords block">
+                <p class="method-title">方式二：“发送给朋友”方式</p>
+                <p class="subtitle">此方式仅用于邀请：<span class="blue">检修人员 检修管理人员</span><br/>(也可以邀请报修人)</p>
+                <div class="code-wraps code2-wraps"><img src="images/share.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js/common/jquery.min.js"></script>
+<script src="js/common/vue.min.js"></script>
+<script src="js/common/common.js"></script>
+<script src="js/common/tool.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="js/invite/index.js"></script>
